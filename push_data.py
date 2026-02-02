@@ -25,8 +25,10 @@ class NetworkDataExtract():
     
     def cv_to_json_converter(self,file_path):
         try:
+            # Extraction of data from csv
             data = pd.read_csv(file_path)
             data.reset_index(drop=True,inplace=True)
+            # Transformation of data from dataframe to json
             records = json.loads(data.T.to_json()).values()
             return records
         except Exception as e:
@@ -41,6 +43,7 @@ class NetworkDataExtract():
             self.mongo_client = pymongo.MongoClient(mongo_db_url)
             self.database = self.mongo_client[self.database]
             self.collection = self.database[self.collection]
+            # Loading of data to collection of mongodb database
             self.collection.insert_many(self.records)
             return (len(self.records))
         except Exception as e:
