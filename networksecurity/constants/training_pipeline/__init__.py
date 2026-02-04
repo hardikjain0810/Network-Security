@@ -44,7 +44,7 @@ Data transformation related constant start with DATA_TRANSFORMATION var name
 DATA_TRANSFORMATION_DIR_NAME:str = "data_transformation"
 DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR:str = "transformed"
 DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR:str = "transformed_object"
-PREPROCESSING_OBJECT_FILE_NAME:str = "preprocessor"
+PREPROCESSING_OBJECT_FILE_NAME:str = "preprocessor.pkl"
 # KNN imputer to replace nan
 DATA_TRANSFORMATION_IMPUTER_PARAMS:dict = {
     "missing_values":np.nan,

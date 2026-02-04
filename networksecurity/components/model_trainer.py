@@ -11,11 +11,11 @@ from networksecurity.entity.config_entity import ModelTrainerConfig
 
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 from networksecurity.utils.main_utils.utils import save_object,load_object
-from networksecurity.utils.main_utils.utils import load_numpy_array_data,evaluate_models
+from networksecurity.utils.main_utils.utils import load_numpy_array_data,evaluate_model
 from networksecurity.utils.ml_utils.metric.classification_metric import get_classification_score
 
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import r2_score
+from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import (
@@ -72,7 +72,7 @@ class ModelTrainer:
             }
             
         }
-        model_report:dict=evaluate_models(X_train=x_train,y_train=y_train,X_test=x_test,y_test=y_test,
+        model_report:dict=evaluate_model(x_train=x_train,y_train=y_train,x_test=x_test,y_test=y_test,
                                           models=models,param=params)
         
         ## To get best model score from dict
@@ -86,44 +86,29 @@ class ModelTrainer:
         best_model = models[best_model_name]
         y_train_pred=best_model.predict(x_train)
 
-        classification_train_metric=get_classification_score(y_true=y_train,y_pred=y_train_pred)
-        
-        ## Track the experiements with mlflow
-        self.track_mlflow(best_model,classification_train_metric)
+        classification_train_metric=get_classification_score(y_true=y_train,y_pred=y_train_pred)  
+
+        # Track the MLflow
 
 
         y_test_pred=best_model.predict(x_test)
-        classification_test_metric=get_classification_score(y_true=y_test,y_pred=y_test_pred)
 
-        self.track_mlflow(best_model,classification_test_metric)
+        classification_test_metric=get_classification_score(y_true=y_train,y_pred=y_train_pred)
 
-        preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
-            
+        preprocessor = load_object(self.data_transformation_artifact.transformed_object_file_path)
+
         model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
         os.makedirs(model_dir_path,exist_ok=True)
 
-        Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
-        save_object(self.model_trainer_config.trained_model_file_path,obj=NetworkModel)
-        #model pusher
-        save_object("final_model/model.pkl",best_model)
-        
+        Network_Model = NetworkModel(preprocessor=preprocessor,model=best_model)
+        save_object(self.model_trainer_config.trained_model_file_path,obj=Network_Model)
 
-        ## Model Trainer Artifact
-        model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
+        # Model Trainer  Artifact
+        model_trainer_artifact = ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
                              train_metric_artifact=classification_train_metric,
-                             test_metric_artifact=classification_test_metric
-                             )
-        logging.info(f"Model trainer artifact: {model_trainer_artifact}")
+                             test_metric_artifact=classification_test_metric)
+        logging.info(f"Model trainer artifact : {model_trainer_artifact}")
         return model_trainer_artifact
-
-
-        
-
-
-       
-    
-    
-        
     def initiate_model_trainer(self)->ModelTrainerArtifact:
         try:
             train_file_path = self.data_transformation_artifact.transformed_train_file_path
