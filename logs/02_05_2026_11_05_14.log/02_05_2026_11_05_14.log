@@ -1,0 +1,29 @@
+[2026-02-05 11:05:18,851] | Line 1025 | httpx | INFO | HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-02-05 11:05:18,858] | Line 107 | dagshub | INFO | Accessing as hardikjain0810
+[2026-02-05 11:05:20,000] | Line 1025 | httpx | INFO | HTTP Request: GET https://dagshub.com/api/v1/repos/hardikjain0810/Network-Security "HTTP/1.1 200 OK"
+[2026-02-05 11:05:21,050] | Line 1025 | httpx | INFO | HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-02-05 11:05:21,053] | Line 107 | dagshub | INFO | Initialized MLflow to track repo "hardikjain0810/Network-Security"
+[2026-02-05 11:05:21,054] | Line 107 | dagshub | INFO | Repository hardikjain0810/Network-Security initialized!
+[2026-02-05 11:05:25,092] | Line 33 | root | INFO | Start data ingestion
+[2026-02-05 11:05:27,643] | Line 61 | root | INFO | Performed train test split on dataframe
+[2026-02-05 11:05:27,643] | Line 65 | root | INFO | Exporting train and test file path
+[2026-02-05 11:05:27,719] | Line 72 | root | INFO | Exported train and test data as csv to ingested folder
+[2026-02-05 11:05:27,719] | Line 36 | root | INFO | Data Ingestion completed and artifact : DataIngestionArtifact(trained_file_path='artifacts\\02_05_2026_11_05_14\\data_ingestion\\ingested\\train.csv', test_file_path='artifacts\\02_05_2026_11_05_14\\data_ingestion\\ingested\\test.csv')
+[2026-02-05 11:05:27,720] | Line 44 | root | INFO | Start data validation
+[2026-02-05 11:05:27,883] | Line 31 | root | INFO | Required number ofcolumns :2
+[2026-02-05 11:05:27,883] | Line 32 | root | INFO | Data frame has columns : len(dataframe.columns)
+[2026-02-05 11:05:27,883] | Line 31 | root | INFO | Required number ofcolumns :2
+[2026-02-05 11:05:27,883] | Line 32 | root | INFO | Data frame has columns : len(dataframe.columns)
+[2026-02-05 11:05:28,070] | Line 47 | root | INFO | Data Validation completed and artifact : DataValidationArtifact(validation_status=None, valid_train_file_path='artifacts\\02_05_2026_11_05_14\\data_ingestion\\ingested\\train.csv', valid_test_file_path='artifacts\\02_05_2026_11_05_14\\data_ingestion\\ingested\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='artifacts\\02_05_2026_11_05_14\\data_validation\\drift_report\\report.yaml')
+[2026-02-05 11:05:28,070] | Line 41 | root | INFO | Entered initiate_data_transformation method of DataTransformation class
+[2026-02-05 11:05:28,070] | Line 43 | root | INFO | Starting data transformation
+[2026-02-05 11:05:28,105] | Line 32 | root | INFO | Entered get_data_transformer_object method of transformation class
+[2026-02-05 11:05:28,123] | Line 43 | root | INFO | Entered the save_object method of MainUtils class
+[2026-02-05 11:05:28,126] | Line 47 | root | INFO | Exited the save_object method of MainUtils class
+[2026-02-05 11:05:28,126] | Line 43 | root | INFO | Entered the save_object method of MainUtils class
+[2026-02-05 11:05:28,128] | Line 47 | root | INFO | Exited the save_object method of MainUtils class
+[2026-02-05 11:09:08,722] | Line 43 | root | INFO | Entered the save_object method of MainUtils class
+[2026-02-05 11:09:08,794] | Line 47 | root | INFO | Exited the save_object method of MainUtils class
+[2026-02-05 11:09:08,794] | Line 43 | root | INFO | Entered the save_object method of MainUtils class
+[2026-02-05 11:09:08,840] | Line 47 | root | INFO | Exited the save_object method of MainUtils class
+[2026-02-05 11:09:08,841] | Line 132 | root | INFO | Model trainer artifact : ModelTrainerArtifact(trained_model_file_path='artifacts\\02_05_2026_11_05_14\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9914738124238733, precision_score=0.9880639287881853, recall_score=0.9949073130983908), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9914738124238733, precision_score=0.9880639287881853, recall_score=0.9949073130983908))

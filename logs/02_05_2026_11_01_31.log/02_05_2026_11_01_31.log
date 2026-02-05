@@ -1,0 +1,12 @@
+[2026-02-05 11:01:52,163] | Line 1025 | httpx | INFO | HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-02-05 11:01:52,191] | Line 107 | dagshub | INFO | Accessing as hardikjain0810
+[2026-02-05 11:01:54,623] | Line 1025 | httpx | INFO | HTTP Request: GET https://dagshub.com/api/v1/repos/hardikjain0810/Network-Security "HTTP/1.1 200 OK"
+[2026-02-05 11:01:55,339] | Line 1025 | httpx | INFO | HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-02-05 11:01:55,344] | Line 107 | dagshub | INFO | Initialized MLflow to track repo "hardikjain0810/Network-Security"
+[2026-02-05 11:01:55,345] | Line 107 | dagshub | INFO | Repository hardikjain0810/Network-Security initialized!
+[2026-02-05 11:02:31,819] | Line 33 | root | INFO | Start data ingestion
+[2026-02-05 11:02:35,768] | Line 61 | root | INFO | Performed train test split on dataframe
+[2026-02-05 11:02:35,769] | Line 65 | root | INFO | Exporting train and test file path
+[2026-02-05 11:02:35,827] | Line 72 | root | INFO | Exported train and test data as csv to ingested folder
+[2026-02-05 11:02:35,828] | Line 36 | root | INFO | Data Ingestion completed and artifact : DataIngestionArtifact(trained_file_path='artifacts\\02_05_2026_11_01_32\\data_ingestion\\ingested\\train.csv', test_file_path='artifacts\\02_05_2026_11_01_32\\data_ingestion\\ingested\\test.csv')
+[2026-02-05 11:02:35,829] | Line 44 | root | INFO | Start data validation
