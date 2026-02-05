@@ -10,5 +10,6 @@ pyyaml
 mlflow
 dagshub
 fastapi
+python-multipart
 
 #-e .
